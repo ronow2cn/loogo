@@ -1,0 +1,43 @@
+{
+    "common": {
+        "version": "0.0.1",
+        "logLevel": "Info",
+	    "perfmon": "true",
+
+        "dbCenter": "mongodb://192.168.0.200:27017/haa_mjc?authSource=admin",
+
+        "dbUser": {
+            "u1": "mongodb://192.168.0.200:28001/haa_mju?authSource=admin",
+            "u2": "mongodb://192.168.0.200:28002/haa_mju?authSource=admin"
+        }
+    },
+
+    "switcher": {
+        "ip":   "127.0.0.1",
+        "port": 7000,
+
+        "token": "sdfvrfGherwhdsgsy3jbhnsdf234"
+    },
+
+    "auth": {
+        "ip":   "127.0.0.1",
+        "port": 8000,
+
+        "token": "sdfvrfGherwhdsgsy3jbhnsdf234"
+    },
+
+    "gates": {
+        "gate1": {
+            "ipWan": "127.0.0.1",
+            "port":   29990
+        }
+    },
+
+    "games": {
+        "game1": {
+            "addr4gw": "127.0.0.1:19990",
+            "dbGame": "mongodb://192.168.0.200:27017/haa_mj1?authSource=admin",
+            "dbLog":  "mongodb://192.168.0.200:27017/haa_mjlog1?authSource=admin"
+        }
+    }
+}
