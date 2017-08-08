@@ -9,6 +9,11 @@ import (
 )
 
 // ============================================================================
+const (
+	DefaultTimeOutSecond = 5
+)
+
+// ============================================================================
 
 func HttpGet(addr string) (ret string) {
 	res, err := http.Get(addr)
@@ -46,7 +51,7 @@ func HttpPost(addr string, data url.Values) (ret string) {
 
 func HttpGetT(addr string, timeout int) (ret string, err error) {
 	if timeout < 0 {
-		timeout = 0
+		timeout = DefaultTimeOutSecond
 	}
 
 	client := &http.Client{
@@ -81,7 +86,7 @@ func HttpGetT(addr string, timeout int) (ret string, err error) {
 
 func HttpPostT(addr string, data url.Values, timeout int) (ret string, err error) {
 	if timeout < 0 {
-		timeout = 0
+		timeout = DefaultTimeOutSecond
 	}
 
 	client := &http.Client{
