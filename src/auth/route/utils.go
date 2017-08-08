@@ -1,6 +1,7 @@
 package route
 
 import (
+	"comm/config"
 	"comm/logger"
 )
 
