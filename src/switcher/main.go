@@ -9,7 +9,7 @@ import (
 	"os"
 	"switcher/app"
 	"switcher/app/dbmgr"
-	"switcher/app/route"
+	"switcher/route"
 )
 
 var log = logger.DefaultLogger

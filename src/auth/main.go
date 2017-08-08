@@ -1,6 +1,7 @@
 package main
 
 import (
+	"auth/route"
 	"comm"
 	"comm/config"
 	"comm/logger"
@@ -38,9 +39,11 @@ func main() {
 }
 
 func start() {
-
 	//loop
 	loop.Run()
+
+	//route
+	route.AuthRoutes()
 
 	// app started
 	log.Notice("auth svr started")
