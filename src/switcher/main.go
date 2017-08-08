@@ -9,6 +9,7 @@ import (
 	"os"
 	"switcher/app"
 	"switcher/app/dbmgr"
+	"switcher/app/handler"
 )
 
 var log = logger.DefaultLogger
@@ -45,7 +46,7 @@ func start() {
 	//loop
 	loop.Run()
 	//routes
-	Routes()
+	handler.Routes()
 	//gate timer
 	app.GatesTimer.Init()
 	// app started
