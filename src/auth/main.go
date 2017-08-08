@@ -43,11 +43,11 @@ func start() {
 	loop.Run()
 
 	// app started
-	log.Notice("switcher started")
+	log.Notice("auth svr started")
 }
 
 func stop() {
 
 	// app stopped
-	log.Notice("switcher stopped")
+	log.Notice("auth svr stopped")
 }

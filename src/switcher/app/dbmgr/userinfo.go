@@ -8,17 +8,13 @@ import (
 // ============================================================================
 
 type UserInfo struct {
-	UserId       string    `bson:"_id"`         //游戏中玩家唯一id
-	Channel      int32     `bson:"channel"`     //账号渠道类型
-	ChannelUid   string    `bson:"channel_uid"` //对应渠道UID
-	Svr0         string    `bson:"svr0"`        //玩家原始服务器
-	Svr          string    `bson:"svr"`         //玩家登陆服务器
-	Name         string    `bson:"name"`        //玩家名字
-	BanTs        time.Time `bson:"ban_ts"`      //玩家封号时间
-	Token        string    `bson:"token"`       //账号token
-	ExpireT      time.Time `bson:"expire_t"`    //token过期时间
-	RefreshToken string    `bson:"r_token"`     //刷新token(主要微信，支付宝用到)
-	ExpireR      time.Time `bson:"expire_r"`    //刷新token过期时间
+	UserId     string    `bson:"_id"`         //游戏中玩家唯一id
+	Channel    int32     `bson:"channel"`     //账号渠道类型
+	ChannelUid string    `bson:"channel_uid"` //对应渠道UID
+	Svr0       string    `bson:"svr0"`        //玩家原始服务器
+	Svr        string    `bson:"svr"`         //玩家登陆服务器
+	Name       string    `bson:"name"`        //玩家名字
+	BanTs      time.Time `bson:"ban_ts"`      //玩家封号时间
 }
 
 // ============================================================================
