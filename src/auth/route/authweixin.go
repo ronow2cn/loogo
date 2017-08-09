@@ -22,7 +22,7 @@ type weixinTokenRet struct {
 	OpenId    string `json:"openid"`
 	Scope     string `json:"scope"`
 	UnionId   string `json:"unionid"`
-	ErrCode   string `json:"errcode"`
+	ErrCode   int    `json:"errcode"`
 	ErrMsg    string `json:"errmsg"`
 }
 
@@ -104,11 +104,11 @@ func updateWeinXinTokenByRefreshToken(w http.ResponseWriter, refrtoken string) i
 	var jret weixinTokenRet
 	err = json.Unmarshal([]byte(ret), &jret)
 	if err != nil {
-		log.Error("processWeiXinCodeAuth Unmarshal error", err)
+		log.Error("processWeiXinCodeAuth Unmarshal error", ret, err)
 		return Err.Failed
 	}
 
-	if len(jret.ErrCode) != 0 {
+	if jret.ErrCode > 0 {
 		log.Error("processWeiXinCodeAuth ErrCode", jret.ErrCode, jret.ErrMsg)
 		return Err.Failed
 	}
@@ -141,11 +141,11 @@ func processWeiXinCodeAuth(w http.ResponseWriter, code string) int {
 	var jret weixinTokenRet
 	err = json.Unmarshal([]byte(ret), &jret)
 	if err != nil {
-		log.Error("processWeiXinCodeAuth Unmarshal error", err)
+		log.Error("processWeiXinCodeAuth Unmarshal error", ret, err)
 		return Err.Failed
 	}
 
-	if len(jret.ErrCode) != 0 {
+	if jret.ErrCode > 0 {
 		log.Error("processWeiXinCodeAuth ErrCode", jret.ErrCode, jret.ErrMsg)
 		return Err.Failed
 	}

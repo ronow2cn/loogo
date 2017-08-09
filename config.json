@@ -26,8 +26,8 @@
         "weixin":{
             "appid":"",
             "appkey":"",
-            "tokenurl":"",
-            "refrurl":""
+            "tokenurl":"https://api.weixin.qq.com/sns/oauth2/access_token",
+            "refrurl":"https://api.weixin.qq.com/sns/oauth2/refresh_token"
         },
 
         "token": "sdfvrfGherwhdsgsy3jbhnsdf234"

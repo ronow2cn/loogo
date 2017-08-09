@@ -1,4 +1,5 @@
 SERVERS=(
+"auth         ./auth -config config.json -server auth -log auth.log"
 "switcher     ./switcher -config config.json -server switcher -log switcher.log"
 "game1        ./game -config config.json -server game1 -log game1.log"
 "gate1        ./gate -config config.json -server gate1 -log gate1.log"
