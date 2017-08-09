@@ -6,3 +6,7 @@ package gconst
 const (
 	ObjTypeCurrency = 1
 )
+
+const (
+	HttpTimeOutSecond = 5
+)
