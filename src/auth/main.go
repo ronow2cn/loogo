@@ -5,6 +5,7 @@ import (
 	"comm"
 	"comm/config"
 	"comm/logger"
+	"comm/sched/asyncop"
 	"comm/sched/loop"
 	"flag"
 	"os"
@@ -41,6 +42,7 @@ func main() {
 func start() {
 	//loop
 	loop.Run()
+	asyncop.Start()
 
 	//route
 	route.AuthRoutes()

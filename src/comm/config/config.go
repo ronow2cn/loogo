@@ -42,10 +42,18 @@ type switcherT struct {
 	Token string `json:"token"`
 }
 
+type weixinT struct {
+	AppId    string `json:"appid"`
+	AppKey   string `json:"appkey"`
+	TokenUrl string `json:"tokenurl"`
+	RefrUrl  string `json:"refrurl"`
+}
+
 type authT struct {
-	IP    string `json:"ip"`
-	Port  int32  `json:"port"`
-	Token string `json:"token"`
+	IP     string   `json:"ip"`
+	Port   int32    `json:"port"`
+	Token  string   `json:"token"`
+	WeiXin *weixinT `json:"weixin"`
 }
 
 // ============================================================================

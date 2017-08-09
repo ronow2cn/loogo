@@ -13,12 +13,11 @@ type Account struct {
 	Token        string    `bson:"token"`       //账号token
 	ExpireT      time.Time `bson:"expire_t"`    //token过期时间
 	RefreshToken string    `bson:"r_token"`     //刷新token(主要微信，支付宝用到)
-	ExpireR      time.Time `bson:"expire_r"`    //刷新token过期时间
 }
 
 // ============================================================================
 
-func CenterGetUserInfo(channel int32, uid string) *Account {
+func CenterGetAccountInfo(channel int32, uid string) *Account {
 	var obj Account
 
 	err := DBCenter.GetObjectByCond(
@@ -35,4 +34,27 @@ func CenterGetUserInfo(channel int32, uid string) *Account {
 	}
 
 	return &obj
+}
+
+func CenterUpdateAccountInfo(channel int32, uid string, token, refrtoken string, expire int64) {
+
+	err := DBCenter.Upsert(
+		CTabNameAccount,
+		db.M{
+			"channel":     channel,
+			"channel_uid": uid,
+		},
+		&Account{
+			Channel:      channel,
+			ChannelUid:   uid,
+			Token:        token,
+			RefreshToken: refrtoken,
+			ExpireT:      time.Now().Add(time.Duration(expire) * time.Second),
+		},
+	)
+
+	if err != nil {
+		log.Warning("CenterUpdateAccountInfo error", err)
+		return
+	}
 }
