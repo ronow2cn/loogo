@@ -11,12 +11,10 @@ import (
 
 type User struct {
 	Id         string    `bson:"_id"`         // Id
-	IdDefault  string    `bson:"id_default"`  // 默认 认证 Id
-	IdFacebook string    `bson:"id_facebook"` // facebook Id
+	Channel    int32     `bson:"channel"`     //账号渠道类型
+	ChannelUid string    `bson:"channel_uid"` //对应渠道UID
 	Svr0       string    `bson:"svr0"`        // 原始服名称
 	Svr        string    `bson:"svr"`         // 当前服名称
-	Channel    string    `bson:"channel"`     // 渠道
-	Plat       string    `bson:"plat"`        // 登陆平台
 	Name       string    `bson:"name"`        // 名字
 	CreateTs   time.Time `bson:"create_ts"`   // 创建时间
 	LoginTs    time.Time `bson:"login_ts"`    // 上次登陆时间
@@ -24,10 +22,9 @@ type User struct {
 
 	RstTs time.Time `bson:"rst_ts"` // 上次重置时间
 
-	Head   int32 `bson:"head"`   // 头像
-	HFrame int32 `bson:"hframe"` // 相框
-	Lv     int32 `bson:"lv"`     // 等级
-	Exp    int32 `bson:"exp"`    // 经验
+	Head string `bson:"head"` // 头像
+	Lv   int32  `bson:"lv"`   // 等级
+	Exp  int32  `bson:"exp"`  // 经验
 
 	db *db.Database `bson:"-"`
 }
@@ -53,8 +50,7 @@ func createUser(uid string, f func(*User)) *User {
 	user.CreateTs = time.Now()
 	user.RstTs = time.Unix(0, 0)
 
-	user.Head = 0
-	user.HFrame = 0
+	user.Head = ""
 	user.Lv = 1
 	user.Exp = 0
 
@@ -71,12 +67,6 @@ func createUser(uid string, f func(*User)) *User {
 		log.Error("create user failed:", uid, err)
 		return nil
 	}
-
-	// // create mailbox in DB
-	// mail.CreateMailBoxInDB(udb, user.Id)
-
-	// // create chatbox in DB
-	// chat.CreateChatBoxInDB(udb, user.Id)
 
 	// update user name into center-db
 	dbmgr.CenterUpdateUserName(user.Id, user.Name)

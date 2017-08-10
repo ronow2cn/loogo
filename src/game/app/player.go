@@ -132,20 +132,17 @@ func (self *Player) GetName() string {
 	return self.user.Name
 }
 
-func (self *Player) GetChannel() string {
+func (self *Player) GetChannel() int32 {
 	return self.user.Channel
 }
 
-func (self *Player) GetPlat() string {
-	return self.user.Plat
+func (self *Player) GetChannelUid() string {
+	return self.user.ChannelUid
 }
 
-func (self *Player) GetHead() int32 {
+func (self *Player) GetHead() string {
 	return self.user.Head
 
-}
-func (self *Player) GetHFrame() int32 {
-	return self.user.HFrame
 }
 
 func (self *Player) GetLevel() int32 {
