@@ -47,5 +47,6 @@ fi
 
 echo copy config.json to bin...
 cp config.json bin/
+cp SERVERS bin/
 
 echo -e "\033[32mDone\033[0m"
