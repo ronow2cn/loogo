@@ -13,7 +13,7 @@ const (
 	// --------------------------------
 	// 登陆认证类型 [200, 250)
 	// --------------------------------
-
-	LoginType_WeiXinCode  = 200
-	LoginType_WeiXinToken = 201
+	LoginType_Default     = 200
+	LoginType_WeiXinCode  = 201
+	LoginType_WeiXinToken = 202
 )

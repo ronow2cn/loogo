@@ -17,6 +17,7 @@ func GW_Login_R(message msg.Message, ctx interface{}) {
 		client.SendMsg(&msg.C_Test{
 			Value: 12,
 		})
+		log.Info("SendMsg C_Test:")
 	}
-	log.Info("GW_Login_R:", req.AuthId)
+	log.Info("GW_Login_R:", req.ErrorCode, req.AuthId)
 }

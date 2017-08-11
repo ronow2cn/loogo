@@ -2,7 +2,6 @@ package app
 
 import (
 	"client/msg"
-	"comm"
 	"comm/config"
 	"comm/logger"
 	"comm/packet"
@@ -85,9 +84,9 @@ func (self *Client) OnConnected() {
 
 	//connect gate and send msg to gate
 	self.SendMsg(&msg.C_Login{
-		AuthChannel: macrocode.ChannelType_WeiXin,
+		AuthChannel: macrocode.ChannelType_Test,
 		AuthType:    macrocode.LoginType_WeiXinCode,
-		AuthId:      comm.I32toa(self.Id),
+		AuthId:      "u1-100",
 		Svr0:        config.DefaultGame.Name,
 		VerMajor:    config.Common.VerMajor,
 		VerMinor:    config.Common.VerMinor,

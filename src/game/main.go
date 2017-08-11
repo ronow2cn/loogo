@@ -7,6 +7,7 @@ import (
 	"comm/sched/loop"
 	"flag"
 	"game/app"
+	"game/app/dbmgr"
 	"game/handler"
 	"game/perfmon"
 	"math/rand"
@@ -45,7 +46,8 @@ func main() {
 }
 
 func start() {
-
+	// open db mgr
+	dbmgr.Open()
 	// start net mgr
 	handler.Init()
 	app.NetMgr.Start()
@@ -63,7 +65,8 @@ func stop() {
 
 	// stop app loop
 	loop.Stop()
-
+	// close db mgr
+	dbmgr.Close()
 	// app stopped
 	log.Notice("game stopped")
 }

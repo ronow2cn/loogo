@@ -1,6 +1,7 @@
 package main
 
 import (
+	"auth/app/dbmgr"
 	"auth/route"
 	"comm"
 	"comm/config"
@@ -40,6 +41,8 @@ func main() {
 }
 
 func start() {
+	// open db mgr
+	dbmgr.Open()
 	//loop
 	loop.Run()
 	asyncop.Start()
@@ -52,7 +55,8 @@ func start() {
 }
 
 func stop() {
-
+	// close db mgr
+	dbmgr.Close()
 	// app stopped
 	log.Notice("auth svr stopped")
 }
